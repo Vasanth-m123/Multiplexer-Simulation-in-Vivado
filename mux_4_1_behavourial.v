@@ -1,14 +1,14 @@
-module mux_4_1_behavioral (a,s,out);
-input [3:0]a;
-input [1:0]s;
-output reg out;
+module mux4to1_bhv(I,S,Y);
+    input wire [0:3] I;
+    input wire [1:0] S;
+    output reg Y;
     always @(*) begin
-        case ({s[1], s[0]})
-            2'b00: out = a[0];
-            2'b01: out = a[1];
-            2'b10: out = a[2];
-            2'b11: out = a[3];
-            default: out = 1'bx;
+        case (S)
+            2'b00: Y = I[0];
+            2'b01: Y = I[1];
+            2'b10: Y = I[2];
+            2'b11: Y = I[3];
+            default: Y = 1'b0;
         endcase
     end
 endmodule
